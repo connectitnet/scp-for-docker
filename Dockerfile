@@ -14,6 +14,7 @@ RUN mkdir /var/run/sshd && chmod 0755 /var/run/sshd \
  && echo "allowsftp" >> /etc/rssh.conf
 
 ADD entrypoint.sh /
+RUN chmod +x /docker-entrypoint.sh
 
 VOLUME [ "/etc/ssh" ]
 
