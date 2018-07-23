@@ -8,7 +8,8 @@ IFS=, read -ra users <<< "$SCP_USERS"
 COUNTER=0
 for username in "${users[@]}"
 do
-    id -u $username &>/dev/null || adduser -D -u 100$COUNTER -H -s /usr/bin/rssh $username
+    uid=$[COUNTER + 1000]
+    id -u $username &>/dev/null || adduser -D -u $uid -H -s /usr/bin/rssh $username
     mkdir -p /home/$username/.ssh
     chmod 0700 /home/$username
     touch /home/$username/.ssh/authorized_keys 
