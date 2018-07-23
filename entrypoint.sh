@@ -17,10 +17,10 @@ do
     # Chown home folder (if mounted as a volume for the first time)
     chown -R $username:$username /home/$username
 
-    declare SCP_$username_PWD
-    declare SCP_$username_PWD_FILE
-    user_passwd_var=SCP_$username_PWD
-    user_passwd_file_var=SCP_$username_PWD_FILE
+    declare SCP_${username}_PWD
+    declare SCP_${username}_PWD_FILE
+    user_passwd_var=SCP_${username}_PWD
+    user_passwd_file_var=SCP_${username}_PWD_FILE
     
     if [[ -z "${!user_passwd_file_var}" ]]; then
         password=$(echo ${!user_passwd_var} | base64 -d) 
