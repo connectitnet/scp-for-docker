@@ -34,8 +34,10 @@ do
     COUNTER=$COUNTER+1
 done
 
-# Copy authorized keys from ENV variable
-echo $AUTHORIZED_KEYS | base64 -d >> $AUTHORIZED_KEYS_FILE
+if [[ ${users[@]} == $SCP_DEFAULT_USER ]]; then
+    # Copy authorized keys from ENV variable
+    echo $AUTHORIZED_KEYS | base64 -d >> $AUTHORIZED_KEYS_FILE
+fi
 
 # Run sshd on container start
 exec /usr/sbin/sshd -D -e

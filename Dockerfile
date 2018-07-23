@@ -5,6 +5,7 @@ RUN apk add --update-cache bash openssh rssh \
 
 ARG DEFAULT_USER=data
 
+ENV SCP_DEFAULT_USER=${DEFAULT_USER}
 ENV SCP_USERS ${DEFAULT_USER}
 ENV AUTHORIZED_KEYS_FILE /home/${DEFAULT_USER}/.ssh/authorized_keys
 
