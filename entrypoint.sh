@@ -31,7 +31,7 @@ do
     fi
     
 
-    COUNTER=$COUNTER+1
+    COUNTER=$[COUNTER + 1]
 done
 
 if [[ ${users[@]} == $SCP_DEFAULT_USER ]]; then
