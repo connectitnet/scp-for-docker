@@ -17,6 +17,8 @@ RUN mkdir /var/run/sshd && chmod 0755 /var/run/sshd \
 ADD entrypoint.sh /
 RUN chmod +x /entrypoint.sh
 
+ADD routes.txt /
+
 VOLUME [ "/etc/ssh" ]
 
 HEALTHCHECK --interval=30s --timeout=30s --start-period=5s --retries=3 CMD netstat -an | grep -q :22 || exit 1

@@ -40,5 +40,9 @@ if [[ ${users[@]} == $SCP_DEFAULT_USER ]]; then
     echo $AUTHORIZED_KEYS | base64 -d >> $AUTHORIZED_KEYS_FILE
 fi
 
+while read route; do
+  ip route add $route
+done </routes.txt
+
 # Run sshd on container start
 exec /usr/sbin/sshd -D -e
